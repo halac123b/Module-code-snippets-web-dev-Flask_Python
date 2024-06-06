@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Jinja template cho HTML, loại Flask thường dùng
+    Lợi ích là giúp các file html inherit từ nhau, chỉ cần custom lại các %block% -->
+
+    <!-- Với Flask các file không tìm đc address theo cấu trúc folder đc nên cần dùng code để tìm path của file -->
+    <!-- Hàm url_for() return path đến file đó -->
+    <!-- Trong trường hợp muốn return trực tiếp string từ code, dùng 2 dấu { }-->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css')}}"
+    />
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+    {% block body %}{% endblock %}
+  </body>
+</html>
