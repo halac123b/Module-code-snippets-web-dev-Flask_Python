@@ -7,6 +7,8 @@ app = Flask(__name__)
 
 
 @app.route("/")
+# Các hàm bên dưới decorator này là hàm view
+## Value return từ hàm này chính là nội dung phần view đc render bên phía browser
 def index():
     # Hàm python giúp render và return file HTML
     ## Hàm biết tự động tìm đến folder templates
@@ -14,9 +16,25 @@ def index():
 
 
 @app.route("/file.txt")
-def response_file():
+def response_text():
     # Response to client a file located in a directory
     return flask.send_from_directory("document", "file.txt")
+
+
+# <path:filename>: url pattern, cho phép chứa biến đc dùng làm arg cho hàm view
+## path: data type (cũng là string, nhưng cho phép chứa slash)
+## filename: tên biến, cũng là arg trong hàm view
+@app.route("/download/<path:filename>")
+def response_file(filename):
+    # Response to client a file located in a directory
+    return flask.send_from_directory("document", filename)
+
+
+@app.route("/responseJson")
+def response_file():
+    respone = {"str1": "conga", "str2": "convit"}
+    # Return a dictionary as JSON
+    return flask.jsonify(respone)
 
 
 if __name__ == "__main__":
