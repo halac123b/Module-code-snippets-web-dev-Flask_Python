@@ -1,0 +1,4 @@
+sqlite3 testDB.db
+>> Open a database file to interact
+  >> If it not exist, create new
+  >> Nhưng k phải file mới đc tạo ngay, mà chỉ sau khi ta thực hiện tương tác trên file database đó thì nó mới tạo

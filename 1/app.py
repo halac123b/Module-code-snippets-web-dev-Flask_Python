@@ -5,6 +5,11 @@ import flask
 ## Address __name__ đến file hiện tại nơi chứa server
 app = Flask(__name__)
 
+# Config cho server app
+## TESTING là 1 built-in config: nếu bật các exception sẽ đc throw ngay chứ k đc handle. giúp dễ phát hiện hơn
+## Ngoài ra có thể config các giá trị custom khác
+app.config["TESTING"] = True
+
 
 @app.route("/")
 # Các hàm bên dưới decorator này là hàm view
